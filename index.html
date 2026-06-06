@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>实习摆渡人 - 县域大学生返乡实习智配平台</title>
+<style>
+﻿/* ============================================
+   实习摆渡人 - 品牌官网样式
+   ============================================ */
+
+:root {
+  --primary: #1a56db;
+  --primary-light: #3b82f6;
+  --primary-dark: #1e40af;
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --bg: #ffffff;
+  --bg-alt: #f8fafc;
+  --bg-dark: #0f172a;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --text-white: #f1f5f9;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --max-width: 1200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ========== Navigation ========== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.nav-logo .logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-cta {
+  background: var(--primary);
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px !important;
+}
+
+.nav-cta:hover {
+  background: var(--primary-dark) !important;
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ========== Hero ========== */
+.hero {
+  padding: 140px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(26,86,219,0.1);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--bg-dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(26,86,219,0.35);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26,86,219,0.4);
+}
+
+.btn-outline {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+}
+
+.hero-stat .label {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ========== Sections ========== */
+.section {
+  padding: 80px 24px;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-header .section-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--bg-dark);
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: var(--text-light);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ========== Problem Section ========== */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.problem-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border);
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.problem-card .card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.problem-card .card-icon.red { background: #fef2f2; }
+.problem-card .card-icon.amber { background: #fffbeb; }
+.problem-card .card-icon.blue { background: #eff6ff; }
+
+.problem-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--bg-dark);
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* ========== Solution Steps ========== */
+.steps {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.step {
+  flex: 1;
+  min-width: 250px;
+  max-width: 360px;
+  text-align: center;
+  padding: 32px 24px;
+  position: relative;
+}
+
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 14px rgba(26,86,219,0.3);
+}
+
+.step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--bg-dark);
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* Connector line between steps */
+@media (min-width: 900px) {
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    right: -12px;
+    width: 24px;
+    height: 2px;
+    background: var(--border);
+  }
+}
+
+/* ========== Platform Tabs ========== */
+.platform-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.platform-tab {
+  padding: 10px 24px;
+  border-radius: 24px;
+  border: 2px solid var(--border);
+  background: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-light);
+}
+
+.platform-tab:hover {
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.platform-tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.platform-content {
+  display: none;
+  background: white;
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.platform-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.platform-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--bg-dark);
+}
+
+.platform-features {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.platform-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.platform-features li:last-child {
+  border-bottom: none;
+}
+
+.platform-features .check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ========== Competitor Table ========== */
+.compare-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 700px;
+}
+
+.compare-table th {
+  background: var(--bg-dark);
+  color: white;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.compare-table th:first-child {
+  text-align: left;
+}
+
+.compare-table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+.compare-table tr:last-child td {
+  background: #eff6ff;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: none;
+}
+
+.compare-table .yes { color: #16a34a; font-weight: 700; }
+.compare-table .no { color: #dc2626; }
+
+/* ========== Features Grid ========== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: white;
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.feature-card:hover {
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow);
+}
+
+.feature-card .f-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.feature-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--bg-dark);
+}
+
+.feature-card p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ========== Team ========== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.team-card {
+  text-align: center;
+  background: white;
+  padding: 32px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.team-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light), #818cf8);
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+}
+
+.team-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.team-card .role {
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.team-card .desc {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ========== CTA Section ========== */
+.cta-section {
+  background: linear-gradient(135deg, var(--bg-dark), #1e3a5f);
+  color: white;
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.cta-section p {
+  font-size: 16px;
+  color: #94a3b8;
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+
+.btn-white {
+  background: white;
+  color: var(--primary);
+}
+
+.btn-white:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: var(--bg-dark);
+  color: #94a3b8;
+  padding: 40px 24px 24px;
+  font-size: 14px;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 20px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #1e293b;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-120%);
+    transition: var(--transition);
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .hero {
+    padding: 120px 20px 60px;
+  }
+
+  .hero-stats {
+    gap: 32px;
+  }
+
+  .hero-stat .number {
+    font-size: 28px;
+  }
+
+  .section {
+    padding: 56px 20px;
+  }
+
+  .platform-content {
+    padding: 24px;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step {
+    max-width: 100%;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+}
+
+/* ========== Animations ========== */
+.animate-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.2s ease}
+.modal{background:#fff;border-radius:20px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+.modal-header{position:sticky;top:0;background:#fff;padding:24px 28px 16px;border-bottom:1px solid #e2e8f0;z-index:1;border-radius:20px 20px 0 0}
+.modal-close{float:right;background:none;border:none;font-size:28px;cursor:pointer;color:#94a3b8;padding:0;line-height:1}
+.modal-close:hover{color:#1e293b}
+.modal-body{padding:24px 28px}
+.modal-company{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.modal-logo{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.modal-logo.eco{background:#dcfce7}.modal-logo.gov{background:#eff6ff}.modal-logo.media{background:#fef3c7}.modal-logo.edu{background:#fce7f3}
+.modal-title{font-size:22px;font-weight:800;color:#1e293b;margin-bottom:8px}
+.modal-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.modal-tag{background:#eff6ff;color:#1a56db;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:500}
+.modal-section{margin-bottom:20px}
+.modal-section h4{font-size:15px;font-weight:700;color:#1e293b;margin-bottom:8px}
+.modal-section p,.modal-section li{font-size:14px;color:#64748b;line-height:1.7}
+.modal-section ul,.modal-section ol{padding-left:20px}
+.modal-section li{padding:4px 0}
+.modal-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
+.modal-meta-item label{font-size:12px;color:#94a3b8;display:block}
+.modal-meta-item span{font-size:14px;font-weight:600;color:#1e293b}
+.modal-actions{display:flex;gap:12px;padding:20px 0 0;border-top:1px solid #e2e8f0;margin-top:16px}
+.modal-btn{padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:0.2s}
+.modal-btn-primary{background:#1a56db;color:#fff;flex:1}.modal-btn-primary:hover{background:#1e40af}
+.modal-btn-outline{border:2px solid #1a56db;color:#1a56db;background:#fff}.modal-btn-outline:hover{background:#eff6ff}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 24px;border-radius:24px;font-size:14px;z-index:9999;animation:toastIn 0.3s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.job-count{text-align:center;color:#94a3b8;font-size:14px;padding:20px 0}
+.section-subtitle{font-size:14px;color:#94a3b8;margin-bottom:24px;text-align:center}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav"><div class="nav-inner"><a href="#" class="nav-logo"><span class="logo-icon">⚓</span>实习摆渡人</a><ul class="nav-links" id="navLinks"><li><a href="#jobs">找实习</a></li><li><a href="#match">匹配</a></li><li><a href="#team">团队</a></li><li><a href="#cta" class="nav-cta">联系</a></li></ul><button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button></div></nav>
+<section class="hero" id="home"><div class="section-inner"><span class="hero-badge">🏆 中国国际大学生创新大赛（2026）· 创意组</span><h1>让返乡，不再是<br><span class="highlight">降级</span>，而是<span class="highlight">升级</span></h1><p class="hero-subtitle">3000万县域籍大学生，寒暑假找不到专业实习？我们把"发传单"的假期，变成"带着专业回家"的高质量实践。</p><div class="hero-buttons"><a href="#jobs" class="btn btn-primary">🔍 浏览16个岗位</a><a href="#match" class="btn btn-outline">🎯 查看匹配度</a></div><div class="hero-stats"><div class="hero-stat"><span class="number">16</span><span class="label">实时岗位</span></div><div class="hero-stat"><span class="number">5省8县</span><span class="label">覆盖范围</span></div><div class="hero-stat"><span class="number">1-3月</span><span class="label">任务制周期</span></div></div></div></section>
+<section class="section section-alt" id="jobs"><div class="section-inner"><div class="section-header"><span class="section-tag">真实岗位</span><h2>16个县域实习岗位，覆盖5省8县</h2><p class="section-subtitle">所有岗位均为真实县域需求，来自电商产业园、乡镇政府、融媒体中心等基层单位</p></div><div style="display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap"><input type="text" id="searchInput" placeholder="🔍 搜索岗位、企业、技能..." style="flex:1;min-width:200px;padding:14px 20px;border:2px solid #e2e8f0;border-radius:28px;font-size:15px;outline:none;font-family:inherit" oninput="renderJobs()"><select id="filterLogo" onchange="renderJobs()" style="padding:14px 16px;border:2px solid #e2e8f0;border-radius:28px;font-size:14px;outline:none;background:#fff;font-family:inherit"><option value="all">全部类型</option><option value="eco">🌾 电商</option><option value="gov">🏛️ 政务</option><option value="media">📰 媒体</option><option value="edu">🎓 调研</option></select><select id="filterCounty" onchange="renderJobs()" style="padding:14px 16px;border:2px solid #e2e8f0;border-radius:28px;font-size:14px;outline:none;background:#fff;font-family:inherit"><option value="all">全部地区</option><option value="信阳">河南信阳</option><option value="南充">四川南充</option><option value="阜阳">安徽阜阳</option><option value="黄冈">湖北黄冈</option><option value="岳阳">湖南岳阳</option></select></div><div id="jobList"><div class="problem-card" style="cursor:pointer" onclick="openDetail(1)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#dcfce7">🌾</div><div><strong style="display:block;font-size:15px">信阳毛尖电商产业园</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 浉河区</span></div></div><span style="background:#dcfce7;color:#16a34a;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">95% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">助农直播策划与执行</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">策划并执行一场夏茶飘香助农直播活动，负责脚本撰写、直播间搭建、直播执行、数据复盘。核心期1个月在园区全职，返校后线上完成数据分析和下期方案。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">新媒体运营</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">直播策划</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">文案撰写</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-20起 | 💰 补贴1500元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(2)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">固始县乡村振兴局</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 固始县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">89% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">数字乡村建设数据专员</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助整理县域数字乡村建设台账，参与乡村治理信息化平台数据录入与初步分析工作。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">数据分析</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">政务信息化</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">社会调查</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-15起 | 💰 补贴800元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(3)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fef3c7">📰</div><div><strong style="display:block;font-size:15px">光山县融媒体中心</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 光山县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">82% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">政务新媒体内容运营</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">参与光山发布公众号与抖音号的日常运营，策划暑期系列选题，撰写政务宣传文案，制作短视频内容。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">公众号运营</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">短视频剪辑</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">政务宣传</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-18起 | 💰 补贴1000元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(4)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fce7f3">🎓</div><div><strong style="display:block;font-size:15px">潢川县青年创业服务中心</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 潢川县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">78% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">返乡创业政策调研助理</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">走访县域返乡创业青年，整理创业案例，协助撰写返乡创业扶持政策调研报告。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">政策研究</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">田野调查</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">报告撰写</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-22起 | 💰 公益实践·提供证明</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(5)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">息县文化广电和旅游局</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 息县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">76% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">乡镇文化活动策划执行</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助策划并执行暑期乡镇文化惠民活动，包括文艺汇演、非遗展示、暑期少儿阅读推广等。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">活动策划</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">文化传播</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">基层治理</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-20起 | 💰 补贴600元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(6)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#dcfce7">🌾</div><div><strong style="display:block;font-size:15px">新县电子商务公共服务中心</strong><span style="font-size:12px;color:#94a3b8">河南信阳 · 新县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">71% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">县域电商数据运营</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助县域电商企业进行店铺数据分析、商品上架优化、短视频内容制作。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">电商运营</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">数据分析</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">短视频</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-25起 | 💰 补贴1200元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(7)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#dcfce7">🌾</div><div><strong style="display:block;font-size:15px">南充市高坪区柑橘产业协会</strong><span style="font-size:12px;color:#94a3b8">四川南充 · 高坪区</span></div></div><span style="background:#dcfce7;color:#16a34a;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">91% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">柑橘品牌营销策划</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">为南充柑橘设计品牌升级方案，策划暑期线上营销活动，撰写品牌故事与推广文案。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">品牌策划</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">营销推广</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">文案撰写</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-18起 | 💰 补贴1800元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(8)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fef3c7">📰</div><div><strong style="display:block;font-size:15px">阆中市文旅投资集团</strong><span style="font-size:12px;color:#94a3b8">四川南充 · 阆中市</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">85% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">乡村文旅短视频制作</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">深入阆中古城及周边乡村，拍摄制作乡村旅游宣传短视频，发布于抖音和小红书。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">短视频制作</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">旅游推广</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">内容创作</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-15起 | 💰 补贴1500元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(9)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">南充市顺庆区行政审批局</strong><span style="font-size:12px;color:#94a3b8">四川南充 · 顺庆区</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">75% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">基层政务服务优化调研</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">调研群众办事体验，梳理政务服务流程痛点，提出优化建议。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">公共服务</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">流程优化</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">用户调研</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-20起 | 💰 无补贴·提供食宿</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(10)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#dcfce7">🌾</div><div><strong style="display:block;font-size:15px">阜南县柳编文化产业园区</strong><span style="font-size:12px;color:#94a3b8">安徽阜阳 · 阜南县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">88% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">柳编非遗电商运营</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">帮助阜南柳编非遗产品搭建电商销售渠道，拍摄产品图，撰写产品详情页，运营拼多多/抖音店铺。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">电商运营</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">非遗文化</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">产品摄影</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-22起 | 💰 补贴1300元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(11)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">阜阳市人力资源和社会保障局</strong><span style="font-size:12px;color:#94a3b8">安徽阜阳 · 颍州区</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">80% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">农民工就业服务专员</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助农民工就业服务中心进行岗位信息收集、政策宣传材料制作、就业数据统计分析。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">就业服务</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">政策宣传</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">数据整理</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-16起 | 💰 补贴1000元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(12)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fef3c7">📰</div><div><strong style="display:block;font-size:15px">太和县优质粮食产业联盟</strong><span style="font-size:12px;color:#94a3b8">安徽阜阳 · 太和县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">73% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">种粮大户新媒体推广</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">为太和县种粮大户和粮食品牌建立新媒体矩阵，拍摄田间素材，讲述种粮故事。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">新媒体运营</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">农业推广</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">内容创作</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-25起 | 💰 补贴900元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(13)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">红安县文化和旅游局</strong><span style="font-size:12px;color:#94a3b8">湖北黄冈 · 红安县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">84% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">红色文旅数字化档案整理</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助整理红安革命历史档案，进行数字化录入与分类，参与红色文旅宣传材料编写。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">档案管理</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">数字化</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">红色文化</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-15起 | 💰 补贴800元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(14)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#eff6ff">🏛️</div><div><strong style="display:block;font-size:15px">黄冈市黄州区赤壁街道办事处</strong><span style="font-size:12px;color:#94a3b8">湖北黄冈 · 黄州区</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">77% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">社区网格化管理数据助理</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">协助街道办进行网格化管理系统数据更新，参与社区调研，整理居民需求台账。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">社区治理</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">数据管理</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">公共服务</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-18起 | 💰 补贴700元/月</span><span>1个月核心</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(15)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fef3c7">📰</div><div><strong style="display:block;font-size:15px">岳阳市洞庭湖生态经济区建设办公室</strong><span style="font-size:12px;color:#94a3b8">湖南岳阳 · 岳阳楼区</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">86% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">洞庭湖生态保护宣传策划</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">策划洞庭湖生态保护主题宣传活动，制作科普短视频、撰写公众号推文，组织社区环保讲座。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">环保宣传</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">新媒体</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">活动策划</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-20起 | 💰 补贴1200元/月</span><span>1+N任务制</span></div></div><div class="problem-card" style="cursor:pointer" onclick="openDetail(16)"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:#fce7f3">🎓</div><div><strong style="display:block;font-size:15px">共青团岳阳县委</strong><span style="font-size:12px;color:#94a3b8">湖南岳阳 · 岳阳县</span></div></div><span style="background:#fef3c7;color:#d97706;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">79% 匹配</span></div><h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">县域青年人才驿站运营</h3><p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">参与青年人才驿站的日常运营，组织返乡大学生交流活动，维护青年社群，收集青年需求反馈。</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">青年工作</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">活动组织</span><span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">社群运营</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 2026-07-22起 | 💰 补贴600元/月</span><span>1个月核心</span></div></div></div><div id="jobCount" class="job-count">共 16 个岗位</div></div></section>
+<section class="section" id="match"><div class="section-inner"><div class="section-header"><span class="section-tag">智能匹配</span><h2>测测你和县域实习的匹配度</h2><p class="section-subtitle">基于"专业画像 × 假期档期 × 技能标签"三维算法</p></div><div style="background:linear-gradient(135deg,#1a56db,#4f46e5);border-radius:24px;padding:48px;text-align:center;color:#fff"><div style="width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;border:4px solid rgba(255,255,255,0.2)"><span style="font-size:64px;font-weight:800;color:#fbbf24;line-height:1">87</span><span style="font-size:14px;color:rgba(255,255,255,0.7)">综合匹配分</span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;text-align:left"><div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>专业匹配</span><span style="color:#fbbf24">92%</span></div><div style="height:8px;background:rgba(255,255,255,0.2);border-radius:4px;overflow:hidden"><div style="height:100%;background:#fbbf24;border-radius:4px;width:92%"></div></div></div><div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>时间匹配</span><span style="color:#fbbf24">85%</span></div><div style="height:8px;background:rgba(255,255,255,0.2);border-radius:4px;overflow:hidden"><div style="height:100%;background:#fbbf24;border-radius:4px;width:85%"></div></div></div><div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>地点匹配</span><span style="color:#fbbf24">78%</span></div><div style="height:8px;background:rgba(255,255,255,0.2);border-radius:4px;overflow:hidden"><div style="height:100%;background:#fbbf24;border-radius:4px;width:78%"></div></div></div><div><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>技能匹配</span><span style="color:#fbbf24">90%</span></div><div style="height:8px;background:rgba(255,255,255,0.2);border-radius:4px;overflow:hidden"><div style="height:100%;background:#fbbf24;border-radius:4px;width:90%"></div></div></div></div></div></div></section>
+<section class="section section-alt" id="team"><div class="section-inner"><div class="section-header"><span class="section-tag">团队</span><h2>政府管理学院跨界团队</h2></div><div class="team-grid"><div class="team-card"><div class="team-avatar">🎯</div><h4>项目负责人</h4><div class="role">产品经理/统筹</div><div class="desc">政治学与行政学<br>产品架构+政府关系</div></div><div class="team-card"><div class="team-avatar">💻</div><h4>技术负责人</h4><div class="role">全栈开发</div><div class="desc">政治学与行政学<br>小程序+Web全栈</div></div><div class="team-card"><div class="team-avatar">📢</div><h4>运营负责人</h4><div class="role">县域拓展</div><div class="desc">政治学与行政学<br>田野调查+企业对接</div></div><div class="team-card"><div class="team-avatar">🎨</div><h4>设计/调研</h4><div class="role">用户研究</div><div class="desc">政治学与行政学<br>问卷设计+UI设计</div></div></div></div></section>
+<section class="cta-section" id="cta"><div class="section-inner"><h2>让每一个返乡的假期，都成为成长的跳板</h2><p>在校大学生 · 县域企业 · 地方政府 — 欢迎加入</p><a href="mailto:ferryman@example.com" class="btn btn-white">📧 联系我们</a></div></section>
+<footer class="footer"><div class="footer-inner"><span class="footer-logo">⚓ 实习摆渡人</span><ul class="footer-links"><li><a href="#jobs">找实习</a></li><li><a href="#match">匹配</a></li><li><a href="#team">团队</a></li></ul></div><div class="footer-bottom">&copy; 2026 实习摆渡人 · 上海政法学院政府管理学院 · 中国国际大学生创新大赛（2026）参赛项目</div></footer>
+<div id="modalOverlay" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal()"><div class="modal" id="modalContent"></div></div>
+<div id="toast" class="toast" style="display:none"></div>
+<script>
+var ALL_JOBS = [{"id":1,"title":"助农直播策划与执行","company":"信阳毛尖电商产业园","logo":"eco","location":"河南信阳 · 浉河区","match":95,"salary":"补贴1500元/月","start":"2026-07-20","end":"2026-08-20","online":"2026-09-15","housing":true,"credits":false,"tags":["新媒体运营","直播策划","文案撰写"],"type":"1+N任务制","desc":"策划并执行一场夏茶飘香助农直播活动，负责脚本撰写、直播间搭建、直播执行、数据复盘。核心期1个月在园区全职，返校后线上完成数据分析和下期方案。","tasks":["撰写直播策划方案及脚本","搭建直播间场景","执行3场试播+1场正式直播","数据复盘与优化报告","线上粉丝维护与下期策划"],"reqs":["熟悉抖音/快手直播","有文案功底","对农产品电商有兴趣"],"cinfo":"信阳毛尖电商产业园是信阳市重点电商孵化基地，入驻茶企30余家，年直播销售额超5000万元。","mentor":"张经理（电商运营总监，10年经验）"},{"id":2,"title":"数字乡村建设数据专员","company":"固始县乡村振兴局","logo":"gov","location":"河南信阳 · 固始县","match":89,"salary":"补贴800元/月","start":"2026-07-15","end":"2026-08-15","online":null,"housing":true,"credits":true,"tags":["数据分析","政务信息化","社会调查"],"type":"1个月核心","desc":"协助整理县域数字乡村建设台账，参与乡村治理信息化平台数据录入与初步分析工作。","tasks":["整理各乡镇数字乡村建设台账","参与信息化平台数据录入与校验","撰写数据分析初稿"],"reqs":["熟练使用Excel","有数据整理经验","耐心细致"],"cinfo":"固始县乡村振兴局负责全县巩固脱贫攻坚成果与乡村振兴有效衔接工作。","mentor":"王科长（信息化建设负责人）"},{"id":3,"title":"政务新媒体内容运营","company":"光山县融媒体中心","logo":"media","location":"河南信阳 · 光山县","match":82,"salary":"补贴1000元/月","start":"2026-07-18","end":"2026-08-18","online":"2026-10-18","housing":true,"credits":true,"tags":["公众号运营","短视频剪辑","政务宣传"],"type":"1+N任务制","desc":"参与光山发布公众号与抖音号的日常运营，策划暑期系列选题，撰写政务宣传文案，制作短视频内容。","tasks":["策划暑期选题日历","每周撰写2-3篇公众号推文","制作5-8条短视频","线上远程维护2个月"],"reqs":["有公众号运营经验","会剪映/PR","对政务传播有了解"],"cinfo":"光山县融媒体中心是光山县官方新闻媒体，运营光山发布等多平台账号。","mentor":"李主任（融媒体中心副主任）"},{"id":4,"title":"返乡创业政策调研助理","company":"潢川县青年创业服务中心","logo":"edu","location":"河南信阳 · 潢川县","match":78,"salary":"公益实践·提供证明","start":"2026-07-22","end":"2026-08-22","online":null,"housing":true,"credits":true,"tags":["政策研究","田野调查","报告撰写"],"type":"1个月核心","desc":"走访县域返乡创业青年，整理创业案例，协助撰写返乡创业扶持政策调研报告。","tasks":["设计访谈提纲","走访10-15位返乡创业青年","整理案例并撰写调研报告"],"reqs":["有访谈经验","文字表达能力强","对社会调查有兴趣"],"cinfo":"潢川县青年创业服务中心致力于服务县域青年创业就业。","mentor":"赵主任（中心负责人）+ 校内导师联合指导"},{"id":5,"title":"乡镇文化活动策划执行","company":"息县文化广电和旅游局","logo":"gov","location":"河南信阳 · 息县","match":76,"salary":"补贴600元/月","start":"2026-07-20","end":"2026-08-20","online":null,"housing":false,"credits":true,"tags":["活动策划","文化传播","基层治理"],"type":"1个月核心","desc":"协助策划并执行暑期乡镇文化惠民活动，包括文艺汇演、非遗展示、暑期少儿阅读推广等。","tasks":["参与活动方案策划","现场执行与协调","活动宣传与记录"],"reqs":["沟通协调能力强","有活动组织经验优先"],"cinfo":"息县文化广电和旅游局负责全县文化旅游广电事业发展。","mentor":"陈副局长"},{"id":6,"title":"县域电商数据运营","company":"新县电子商务公共服务中心","logo":"eco","location":"河南信阳 · 新县","match":71,"salary":"补贴1200元/月","start":"2026-07-25","end":"2026-08-25","online":"2026-09-30","housing":true,"credits":false,"tags":["电商运营","数据分析","短视频"],"type":"1+N任务制","desc":"协助县域电商企业进行店铺数据分析、商品上架优化、短视频内容制作。","tasks":["分析3-5家店铺运营数据","优化商品详情页","制作产品短视频"],"reqs":["了解电商平台","会基础数据分析"],"cinfo":"新县电商公共服务中心服务全县电商企业，推动农产品上行。","mentor":"刘经理"},{"id":7,"title":"柑橘品牌营销策划","company":"南充市高坪区柑橘产业协会","logo":"eco","location":"四川南充 · 高坪区","match":91,"salary":"补贴1800元/月","start":"2026-07-18","end":"2026-08-18","online":"2026-09-30","housing":true,"credits":false,"tags":["品牌策划","营销推广","文案撰写"],"type":"1+N任务制","desc":"为南充柑橘设计品牌升级方案，策划暑期线上营销活动，撰写品牌故事与推广文案。","tasks":["调研竞品品牌定位","设计品牌升级方案","策划线上营销活动","撰写品牌宣传文案","线上跟踪营销效果"],"reqs":["市场营销基础知识","有创意策划能力","熟悉社交媒体"],"cinfo":"南充柑橘产业协会覆盖全区1200余户果农，年产柑橘20万吨。","mentor":"唐会长（20年柑橘产业经验）"},{"id":8,"title":"乡村文旅短视频制作","company":"阆中市文旅投资集团","logo":"media","location":"四川南充 · 阆中市","match":85,"salary":"补贴1500元/月","start":"2026-07-15","end":"2026-08-15","online":null,"housing":true,"credits":true,"tags":["短视频制作","旅游推广","内容创作"],"type":"1个月核心","desc":"深入阆中古城及周边乡村，拍摄制作乡村旅游宣传短视频，发布于抖音和小红书。","tasks":["策划拍摄脚本","实地拍摄素材","剪辑15-20条短视频","分析传播数据"],"reqs":["熟练使用手机/相机拍摄","会剪辑软件","对旅游内容有感觉"],"cinfo":"阆中市文旅投资集团运营阆中古城5A级景区及周边乡村旅游资源。","mentor":"邓总监（文旅营销总监）"},{"id":9,"title":"基层政务服务优化调研","company":"南充市顺庆区行政审批局","logo":"gov","location":"四川南充 · 顺庆区","match":75,"salary":"无补贴·提供食宿","start":"2026-07-20","end":"2026-08-20","online":null,"housing":true,"credits":true,"tags":["公共服务","流程优化","用户调研"],"type":"1个月核心","desc":"调研群众办事体验，梳理政务服务流程痛点，提出优化建议。","tasks":["设计用户调研问卷","收集100+份群众反馈","分析办事流程痛点","撰写优化建议报告"],"reqs":["公共管理相关专业","善于沟通","有调研经验优先"],"cinfo":"顺庆区行政审批局是南充市政务服务标杆单位。","mentor":"何科长（政务服务改革负责人）"},{"id":10,"title":"柳编非遗电商运营","company":"阜南县柳编文化产业园区","logo":"eco","location":"安徽阜阳 · 阜南县","match":88,"salary":"补贴1300元/月","start":"2026-07-22","end":"2026-08-22","online":"2026-10-01","housing":true,"credits":false,"tags":["电商运营","非遗文化","产品摄影"],"type":"1+N任务制","desc":"帮助阜南柳编非遗产品搭建电商销售渠道，拍摄产品图，撰写产品详情页，运营拼多多/抖音店铺。","tasks":["产品拍摄与修图","撰写产品详情文案","上架并运营电商店铺","策划一场非遗直播"],"reqs":["会产品摄影","了解电商后台","对非遗文化感兴趣"],"cinfo":"阜南柳编是国家级非物质文化遗产，产业园区汇聚60余家柳编企业。","mentor":"杨经理（电商部负责人）"},{"id":11,"title":"农民工就业服务专员","company":"阜阳市人力资源和社会保障局","logo":"gov","location":"安徽阜阳 · 颍州区","match":80,"salary":"补贴1000元/月","start":"2026-07-16","end":"2026-08-16","online":null,"housing":false,"credits":true,"tags":["就业服务","政策宣传","数据整理"],"type":"1个月核心","desc":"协助农民工就业服务中心进行岗位信息收集、政策宣传材料制作、就业数据统计分析。","tasks":["收集并整理企业用工信息","制作就业政策宣传材料","统计分析就业数据","撰写服务报告"],"reqs":["熟练使用Office","沟通能力好","对劳动就业政策有了解"],"cinfo":"阜阳市是劳务输出大市，人社局就业服务中心年服务农民工超50万人次。","mentor":"刘主任（就业服务科）"},{"id":12,"title":"种粮大户新媒体推广","company":"太和县优质粮食产业联盟","logo":"media","location":"安徽阜阳 · 太和县","match":73,"salary":"补贴900元/月","start":"2026-07-25","end":"2026-08-25","online":null,"housing":true,"credits":false,"tags":["新媒体运营","农业推广","内容创作"],"type":"1个月核心","desc":"为太和县种粮大户和粮食品牌建立新媒体矩阵，拍摄田间素材，讲述种粮故事。","tasks":["建立抖音/快手账号","拍摄田间生产素材","撰写品牌故事","策划线上推广方案"],"reqs":["有新媒体运营经验","能适应田间拍摄","对农业有兴趣"],"cinfo":"太和县是安徽省产粮大县，联盟覆盖全县200余户种粮大户。","mentor":"范理事长（联盟负责人）"},{"id":13,"title":"红色文旅数字化档案整理","company":"红安县文化和旅游局","logo":"gov","location":"湖北黄冈 · 红安县","match":84,"salary":"补贴800元/月","start":"2026-07-15","end":"2026-08-15","online":null,"housing":true,"credits":true,"tags":["档案管理","数字化","红色文化"],"type":"1个月核心","desc":"协助整理红安革命历史档案，进行数字化录入与分类，参与红色文旅宣传材料编写。","tasks":["整理革命历史档案","数字化录入与分类","编写红色文旅宣传材料"],"reqs":["细心耐心","文字功底好","对红色历史有兴趣"],"cinfo":"红安县是著名革命老区、中国第一将军县，文旅资源丰富。","mentor":"吴主任（文物保护科）"},{"id":14,"title":"社区网格化管理数据助理","company":"黄冈市黄州区赤壁街道办事处","logo":"gov","location":"湖北黄冈 · 黄州区","match":77,"salary":"补贴700元/月","start":"2026-07-18","end":"2026-08-18","online":null,"housing":false,"credits":true,"tags":["社区治理","数据管理","公共服务"],"type":"1个月核心","desc":"协助街道办进行网格化管理系统数据更新，参与社区调研，整理居民需求台账。","tasks":["更新网格化管理系统数据","参与入户调研","整理居民需求台账","撰写调研小结"],"reqs":["公共管理相关专业","善于沟通","有数据处理基础"],"cinfo":"赤壁街道是黄冈市中心城区主要街道，服务人口约15万。","mentor":"周主任（街道办副主任）"},{"id":15,"title":"洞庭湖生态保护宣传策划","company":"岳阳市洞庭湖生态经济区建设办公室","logo":"media","location":"湖南岳阳 · 岳阳楼区","match":86,"salary":"补贴1200元/月","start":"2026-07-20","end":"2026-08-20","online":"2026-09-20","housing":true,"credits":true,"tags":["环保宣传","新媒体","活动策划"],"type":"1+N任务制","desc":"策划洞庭湖生态保护主题宣传活动，制作科普短视频、撰写公众号推文，组织社区环保讲座。","tasks":["策划宣传主题与方案","制作环保科普短视频","撰写公众号推文","组织社区环保讲座","线上跟踪传播效果"],"reqs":["对环保议题有了解","有内容创作能力","善于活动组织"],"cinfo":"洞庭湖生态经济区建设办公室负责统筹洞庭湖流域生态保护与绿色发展工作。","mentor":"廖科长（宣传与公众参与）"},{"id":16,"title":"县域青年人才驿站运营","company":"共青团岳阳县委","logo":"edu","location":"湖南岳阳 · 岳阳县","match":79,"salary":"补贴600元/月","start":"2026-07-22","end":"2026-08-22","online":null,"housing":true,"credits":true,"tags":["青年工作","活动组织","社群运营"],"type":"1个月核心","desc":"参与青年人才驿站的日常运营，组织返乡大学生交流活动，维护青年社群，收集青年需求反馈。","tasks":["运营青年人才驿站日常事务","组织2-3场返乡青年交流活动","维护青年微信群","撰写青年需求调研报告"],"reqs":["热心青年工作","有社群运营经验","组织能力强"],"cinfo":"共青团岳阳县委致力于服务县域青年成长发展。","mentor":"何副书记"}];
+var ICONS = { eco: "🌾", gov: "🏛️", media: "📰", edu: "🎓" };
+function renderJobs() {
+  var kw = (document.getElementById("searchInput").value || "").toLowerCase();
+  var fl = document.getElementById("filterLogo").value;
+  var fc = document.getElementById("filterCounty").value;
+  var list = ALL_JOBS;
+  if (kw) list = list.filter(function(j) { return j.title.toLowerCase().indexOf(kw) >= 0 || j.company.toLowerCase().indexOf(kw) >= 0 || j.tags.some(function(t) { return t.toLowerCase().indexOf(kw) >= 0; }) || j.location.toLowerCase().indexOf(kw) >= 0; });
+  if (fl !== "all") list = list.filter(function(j) { return j.logo === fl; });
+  if (fc !== "all") list = list.filter(function(j) { return j.location.indexOf(fc) >= 0; });
+  document.getElementById("jobCount").textContent = "共 " + list.length + " 个岗位";
+  var h = "";
+  list.forEach(function(j) {
+    h += '<div class="problem-card" style="cursor:pointer" onclick="openDetail(' + j.id + ')">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">' +
+      '<div style="display:flex;align-items:center;gap:10px">' +
+      '<div style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;background:' + (j.logo === "eco" ? "#dcfce7" : j.logo === "gov" ? "#eff6ff" : j.logo === "media" ? "#fef3c7" : "#fce7f3") + '">' + ICONS[j.logo] + '</div>' +
+      '<div><strong style="display:block;font-size:15px">' + j.company + '</strong><span style="font-size:12px;color:#94a3b8">' + j.location + '</span></div></div>' +
+      '<span style="background:' + (j.match >= 90 ? "#dcfce7" : "#fef3c7") + ';color:' + (j.match >= 90 ? "#16a34a" : "#d97706") + ';padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700">' + j.match + '% 匹配</span></div>' +
+      '<h3 style="font-size:17px;font-weight:700;margin-bottom:6px;color:#1e293b">' + j.title + '</h3>' +
+      '<p style="font-size:13px;color:#64748b;line-height:1.6;margin-bottom:10px">' + (j.desc.length > 80 ? j.desc.substring(0, 80) + "..." : j.desc) + '</p>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">' + j.tags.map(function(t) { return '<span style="background:#eff6ff;color:#1a56db;padding:3px 10px;border-radius:10px;font-size:11px">' + t + '</span>'; }).join("") + '</div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8"><span>📅 ' + j.start + '起 | 💰 ' + j.salary + '</span><span>' + j.type + '</span></div></div>';
+  });
+  document.getElementById("jobList").innerHTML = h || '<p style="text-align:center;padding:60px 0;color:#94a3b8">🔍 没有找到匹配的岗位，试试调整筛选条件</p>';
+}
+function openDetail(id) {
+  var j = ALL_JOBS.find(function(x) { return x.id === id; });
+  if (!j) return;
+  var h = "";
+  h += '<div class="modal-header"><button class="modal-close" onclick="closeModal()">✕</button>' +
+    '<div class="modal-company"><div class="modal-logo ' + j.logo + '">' + ICONS[j.logo] + '</div>' +
+    '<div><strong style="display:block;font-size:17px">' + j.company + '</strong><span style="font-size:13px;color:#94a3b8">' + j.location + '</span></div>' +
+    '<span style="margin-left:auto;background:#dcfce7;color:#16a34a;padding:4px 14px;border-radius:12px;font-size:14px;font-weight:700">' + j.match + '% 匹配</span></div>' +
+    '<div class="modal-title">' + j.title + '</div>' +
+    '<div class="modal-tags">' + j.tags.map(function(t) { return '<span class="modal-tag">' + t + '</span>'; }).join("") + '</div></div>' +
+    '<div class="modal-body">' +
+    '<div class="modal-section"><h4>📋 基本信息</h4><div class="modal-meta-grid">' +
+    '<div class="modal-meta-item"><label>实习周期</label><span>' + j.start + ' ~ ' + j.end + '</span></div>' +
+    '<div class="modal-meta-item"><label>模式</label><span>' + j.type + '</span></div>' +
+    '<div class="modal-meta-item"><label>待遇</label><span>' + j.salary + '</span></div>' +
+    '<div class="modal-meta-item"><label>住宿</label><span>' + (j.housing ? "✅ 提供住宿" : "❌ 自行解决") + '</span></div>' +
+    '<div class="modal-meta-item"><label>学分</label><span>' + (j.credits ? "✅ 可转学分" : "—") + '</span></div>' +
+    '</div></div>' +
+    '<div class="modal-section"><h4>📋 任务清单</h4><ol style="padding-left:20px">' + j.tasks.map(function(t) { return "<li>" + t + "</li>"; }).join("") + '</ol></div>' +
+    '<div class="modal-section"><h4>📝 岗位详情</h4><p>' + j.desc + '</p></div>' +
+    '<div class="modal-section"><h4>✅ 岗位要求</h4><ul>' + j.reqs.map(function(r) { return "<li>" + r + "</li>"; }).join("") + '</ul></div>' +
+    '<div class="modal-section"><h4>🏢 关于企业</h4><p>' + j.cinfo + '</p>' + (j.mentor ? '<p style="margin-top:8px"><strong>实践导师：</strong>' + j.mentor + '</p>' : "") + '</div>' +
+    '<div class="modal-actions"><button class="modal-btn modal-btn-outline" onclick="showToast(\'⭐ 已收藏 \' + j.title + '\')">⭐ 收藏</button>' +
+    '<button class="modal-btn modal-btn-primary" onclick="showToast(\'🚀 已提交申请：\' + j.title + ' — \' + j.company + '\')">🚀 立即申请</button></div></div>';
+  document.getElementById("modalContent").innerHTML = h;
+  document.getElementById("modalOverlay").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+function closeModal() { document.getElementById("modalOverlay").style.display = "none"; document.body.style.overflow = ""; }
+function showToast(msg) { var t = document.getElementById("toast"); t.textContent = msg; t.style.display = "block"; setTimeout(function() { t.style.display = "none"; }, 2500); }
+renderJobs();
+document.getElementById("navToggle").addEventListener("click", function() { document.getElementById("navLinks").classList.toggle("open"); });
+Array.from(document.querySelectorAll("#navLinks a")).forEach(function(a) { a.addEventListener("click", function() { document.getElementById("navLinks").classList.remove("open"); }); });
+Array.from(document.querySelectorAll("a[href^=\"#\"]")).forEach(function(a) { a.addEventListener("click", function(e) { e.preventDefault(); var t = document.querySelector(this.getAttribute("href")); if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: "smooth" }); }); });
+</script>
+</body>
+</html>
